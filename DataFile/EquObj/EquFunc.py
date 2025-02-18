@@ -1,7 +1,7 @@
 import numpy
 from abc import ABC , abstractmethod
 import staticEqu
-import EnumType
+import EnumType, EquTerm
 
 class EquFuncABC(ABC) :
     """
@@ -15,6 +15,18 @@ class EquFuncABC(ABC) :
         """
         전처리 과정, 즉 문자열의 배열로 이루어져 있는 함수를 연산 가능한 형태로 정렬한다.
         """
+        pass
+
+    @abstractmethod
+    def getNameList(self) -> str:
+        pass
+
+    @abstractmethod
+    def getValueList(self) -> str:
+        pass
+
+    @abstractmethod
+    def getEquObjList(self) -> str:
         pass
 
     @abstractmethod
@@ -84,32 +96,6 @@ class EquFunction(EquFuncABC) :
 
     def getEquOper(self):
         return self.operatorsStr
-
-class EquTerm(EquFuncABC) : 
-    """
-    항을 정의한다.
-    수, 변수, 미지수, 상수, 연산자를 정의한다.
-    가장 말단이다.
-    """
-    def __init__(self, name : str, type : EnumType.TermType) :
-        """
-        항 생성자 이다. 3 이면 상수, x면 변수, *이면 연산자를 리턴한다.
-
-        상수의 equObj는 0을 가진다.
-        숫자, 상수, 변수와 함수는 각자 서로 다른 equObj값을 가진다.
-            숫자 equObj : 항상 0이다.
-            상수 equObj : 상수 스택 값으로, 같은 값을 가진 상수면 같은 값을 가지고, 다른 상수면 ++equObj 된 값을 가진다.
-            변수 equObj : 위와 비슷
-            함수 equObj : 위와 비슷
-
-        먼저 인식한 순서로 값을 추가하며, 변수는 같은 이름을 가지면 같은 equObj를 가지고, 
-        함수는 함수의 종류와 매개변수 값이 같으면 같은 같은 equObj를 가진다.
-
-        """
-        self.termName = name # 숫자면 숫자, 상수면 상수이름, 변수면 변수 이름이 저장
-        self.termValue = None # 숫자면 int, 상수면 상수수
-
-        self.equObj = None
 
 
 print(staticEqu.FormulaEqu.parse_expression("x3 + 1"))
