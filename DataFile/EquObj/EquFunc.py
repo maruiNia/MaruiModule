@@ -97,5 +97,4 @@ class EquFunction(EquFuncABC) :
     def getEquOper(self):
         return self.operatorsStr
 
-
 print(staticEqu.FormulaEqu.parse_expression("x3 + 1"))
