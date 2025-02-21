@@ -8,15 +8,25 @@
 
 from sympy import symbols, lambdify
 
-x = symbols("x")
-a = x + 1
+import numpy as np
 
-b = x + 1
+x = symbols('x')
+y = symbols('y')
 
-c = a + b
+expr = y**2 + x + x**2
 
-print(c)
+a = lambdify((x, y), expr)
 
-expr = lambdify(x, a)
 
-print()
+print(list(expr.free_symbols)[0])
+print(type(x))
+
+a = [1, 2, 3]
+b = a
+b.append(4)
+print(a)
+# a = {"a" : 1, "b" : 2}
+# print(len(a))
+
+# a = [1, 2, 3, 4]
+# print(a[1:][0])
