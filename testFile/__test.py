@@ -30,3 +30,27 @@ print(a)
 
 # a = [1, 2, 3, 4]
 # print(a[1:][0])
+
+# print(list(range(10)))
+
+# start = 0
+# lenCount = 3
+
+# lenNum = 10 # index = 9
+
+# count = 3
+
+# listNumber = []
+
+# start = (lenCount * count ) % lenNum
+# print(start)
+# listNumber.append(start)
+# listNumber.append( (start + 1) % 10 )
+# listNumber.append( (start + 2) % 10 )
+
+# print(listNumber)
+
+# for listCounter in range(9 , 0 - 1, -1) :
+#     print(listCounter)
+
+print(4 % 6)
